@@ -1,0 +1,17 @@
+.alignleft {
+	clear:left;
+	margin:0 10px 10px 0;
+}
+
+.alignright {
+	clear:right;
+	margin:0 0 10px 10px;
+}
+
+h2, h3 {
+	clear:left;
+}
+
+.clear {
+	clear:both;
+}

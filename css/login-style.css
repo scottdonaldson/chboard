@@ -1,0 +1,11 @@
+#login {
+	padding-top:80px;
+}
+
+.login h1 a {
+	background:url('../images/logo.png') no-repeat;
+	height:90px;
+	width:350px;
+	position:relative;
+	left:-17px;
+}

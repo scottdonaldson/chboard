@@ -1,0 +1,19 @@
+#wp-admin-bar-wp-logo {
+	display:none;
+}
+
+#acf-pie .order {
+	width: 5%;
+}
+
+#acf-pie .title {
+	width: 25%;
+}
+
+#acf-pie .items {
+	width: 65% !important;
+}
+
+#acf-pie .remove {
+	width: 5%;
+}

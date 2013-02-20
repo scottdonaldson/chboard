@@ -1,0 +1,70 @@
+body {
+	margin: 0 auto;
+	width: 1100px;
+}
+
+.callout {
+	margin-top: 35px;
+}
+
+#loginform {
+	border: 1px solid #c3b9af;
+	margin: 0 auto;
+	padding: 10px 20px;
+	width: 300px;
+}
+
+#loginform label {
+	display: block;
+}
+
+#loginform input {
+	display: block;
+	width: 100%;
+}
+
+.date {
+	background-color: #fff;
+	border-top: 13px solid #85281e;
+	float: left;
+	height: 85px;
+	margin: 0 5px 5px 0;
+	padding: 0 3px 3px;
+	overflow: visible;
+	width: 85px;
+}
+
+.date.today {
+	background: #ffc;
+}
+
+.date.empty {
+	background-color: #e8e8e8;
+	border-top: 0;
+}
+
+.day {
+	color: #fff;
+	display: block;
+	margin-bottom: -15px;
+	position: relative;
+	text-align: center;
+	top: -15px;
+}
+
+.date p {
+	font-size: 11px;
+	line-height: 1.1;
+	margin: 0 0 0.5em;
+}
+
+.entry {
+	border-bottom: 1px solid #ccc;
+	display: block;
+	margin-bottom: 16px;
+}
+
+.entry:target {
+	color: #85281e;
+	font-weight: bold;
+}
