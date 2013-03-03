@@ -62,8 +62,7 @@ a:active {
 
 #container {
 	max-width:1200px;
-	margin:0 auto 20px;
-	padding:0 20px;
+	margin: 0 auto;
 }
 
 #main {
@@ -157,7 +156,6 @@ header {
 	background:#fff;
 	max-width:1200px;
 	margin:40px auto 0;
-	padding:0 20px;
 	position:relative;
 }
 
@@ -188,8 +186,8 @@ header {
 
 #logo {
 	position:absolute;
+	left: 0;
 	z-index:100;
-	left:6px;
 	top:18px;
 	width:33%;
 	max-width:407px;
@@ -560,7 +558,8 @@ header {
 /* ------------- FOOTER --------------- */
 
 footer {
-	background:#fff;
+	background: #f3f1ef;
+	border-top: 1px solid #85281e;
 	max-width:1200px;
 	margin:0 auto 20px;
 	padding:0 20px;
@@ -576,288 +575,4 @@ footer {
 	font-weight: normal;
 	margin: 0;
 	text-transform: none;
-}
-
-@media only screen and (max-width: 959px) {
-	
-	#logo {
-		top:25px;
-		left:19px;
-	}
-	
-	.menu-item {
-		font-size:11px;
-		margin-right:15px;
-	}
-	
-	.menu-item-174 {
-		margin-right:0;
-		font-weight:normal;
-	}
-	
-	.page-template-page-clarion-newsletter-php .third {
-		width:47.8%;
-		margin-right:4.4%;
-	}
-	
-	.page-template-page-clarion-newsletter-php .third:nth-child(2n+2) {
-		clear:none;
-	}
-	
-	.page-template-page-clarion-newsletter-php .third:nth-child(3n+3) {
-		margin-right:4.4%;
-	}
-	
-	.page-template-page-clarion-newsletter-php .third:nth-child(2n+2) {
-		margin-right:0;
-	}
-	
-}
-
-@media only screen and (max-width: 759px) {
-	
-	#logo {
-		top:27px;
-	}
-	
-	#menu {
-		width:95%;
-		height:50px;
-	}
-	
-	.menu-item {
-		margin: 0 20px 5px 0;
-	}
-	
-	.menu-item:nth-child(4) { /* Support Our Work breaks */
-		clear:left;
-	}
-	
-	.menu-item-174 {
-		width:137px;
-		margin-right:0;
-		top:-42px;
-		left:5px;
-	}
-	
-	.home .callout {
-		max-width: 100%;
-		width: 100%;
-	}
-	
-	.social-feed {
-		display:none;
-	}
-	
-	.callout {
-		font-size:20px;
-	}
-	
-	.leftnav li a {
-		font-size:11px;
-		margin-bottom:11px;
-		padding-bottom:11px;
-	}
-	
-	.third {
-		width:47.8%;
-		margin-right:4.4%;
-	}
-	
-	.third:nth-child(2n+2) {
-		clear:none;
-	}
-	
-	.third:nth-child(3n+3) {
-		margin-right:4.4%;
-	}
-	
-	.third:nth-child(2n+2) {
-		margin-right:0;
-	}
-	
-	.fourth {
-		width:28%;
-	}
-	
-	.three-fourths {
-		width:68%;
-	}
-	
-	.entry-title {
-		padding-bottom:7.5px;
-	}
-	
-	.page-template-page-clarion-newsletter-php .third {
-		width:100%;
-		margin-bottom:10px;
-	}
-	
-}
-
-@media only screen and (max-width: 519px) {
-	
-	body {
-		background:#f3f1ef;
-	}
-	
-	.third,
-	.fourth,
-	.fifth,
-	.two-thirds,
-	.three-fourths,
-	.three-fifths {
-		width:100%;
-		margin:0 0 10px 0;
-		float:none;
-	}
-	
-	.third img,
-	.fourth img,
-	.two-thirds img,
-	.three-fourths img {
-		width:100%;
-		height:auto;
-	}
-	
-	header {
-		margin-top:0;
-		padding:0 10px;
-		background:none transparent;
-	}
-	
-	.page-template-page-front-door-php header,
-	.single-front-door header {
-		padding:0;
-	}
-
-	.home .callout,
-	.social {
-		display:none;
-	}
-	
-	#logo {
-		position:relative;
-		top:0;
-		left:-20px;
-		width:100%;
-	}
-	
-	.page-template-page-front-door-php #logo,
-	.single-front-door #logo {
-		display:none;
-	}
-	
-	.banner {
-		display:none;
-	}
-	
-	.page-template-page-front-door-php .banner,
-	.single-front-door .banner {
-		display:block;
-		padding:0;
-	}
-	
-	#menu {
-		background:none transparent;
-		height:auto;
-		margin:0;
-		padding:0;
-		position:relative;
-		width:100%;
-		top:10px;
-	}
-	
-	.menu-item-174 {			/* Donate button reset */
-		background:none transparent;
-		width:auto;
-		height:auto;
-		left:0;
-		top:0;
-		font-weight:bold;
-	}
-	
-	.menu-item-174 a {
-		font-size:11px;
-		color:#85281E;
-		top:0;
-		left:0;
-	}
-	
-	.menu-item-174 a:hover,
-	.menu-item-174 a:active {
-		color:#cd6f19;
-	}
-	
-	.menu-item {
-		width:47.8%;
-		margin:0 4.4% 10px 0;
-		background:#fff;
-		padding:8px 0;
-		text-align:center;
-		font-size:11px;
-	}
-	
-	.menu-item:nth-child(4) { /* Support Our Work breaks */
-		clear:none;
-	}
-	
-	.menu-item:nth-child(2n+2) {
-		margin-right:0;
-	}
-	
-	#main {
-		padding:0;
-	}
-	
-	.page-template-page-front-door-php #main,
-	.single-front-door #main {
-		padding:0 10px;
-	}
-	
-	#container {
-		padding:10px 10px 0;
-		margin-top:10px;
-		border-top:2px solid #85281e;
-	}
-	
-	.page-template-page-front-door-php #container,
-	.single-front-door #container {
-		border-top: 0 none;
-		padding:0;
-		margin-top:0;
-	}
-	
-	.callout {
-		font-size:14px;
-		margin:0 0 20px 0;
-	}
-	
-	.indented {
-		margin-left:0;
-	}
-	
-	.page-id-236 article {
-		width:100%;
-		margin:0;
-	}
-	
-	.sidebar {
-		display:none;
-	}
-	
-	footer {
-		background:none transparent;
-		font-size:10px;
-		padding:0 10px;
-	}
-	
-	.spacer {
-		display:block;
-		clear:both;
-		height:5px;
-	}
-	
-	
-	
 }
