@@ -1,17 +1,27 @@
 $(document).ready(function(){
 	
 	// ----- Calendar
-	var date = $('.date:eq(35), .date:eq(36), .date:eq(37), .date:eq(38), .date:eq(39), .date:eq(40), .date:eq(41)');
-	if (date.each(function(){ $(this).hasClass('empty') ? true : false; })) {
-		date.hide();
-	}
 
-
-	// ---------- Footer Menu -------------- //
-	
-	var footerMenu = $('#menu-footer-menu');
-	footerMenu.find('li:not(:last-child)').append(' |');
-	footerMenu.find('li:not(:first-child)').prepend('&nbsp;');
+		// if last row is empty, remove it
+		var calendar = $('.calendar'),
+			empty;
+		calendar.each(function(){
+			$this = $(this);
+			for (var i = 35; i < 42; i++) {
+				if ($this.find('.date').eq(i).hasClass('empty')) {
+					console.log('yuppers '+ i);
+					empty = true;
+				} else {
+					empty = false;
+					break;
+				}
+			}
+			if (empty) {
+				for (i = 35; i < 42; i++) {
+					$this.children().eq(i).hide();
+				}
+			}
+		});
 
 
 });

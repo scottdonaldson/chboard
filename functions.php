@@ -12,6 +12,7 @@ add_editor_style('css/editor-style.css');
 
 function my_admin_head() {
     echo '<link rel="stylesheet" type="text/css" href="' .get_bloginfo('template_url').'/css/admin-style.css">';
+    echo '<script src="'.get_bloginfo('template_url').'/js/admin.js"></script>';
 }
 
 add_action('admin_head', 'my_admin_head');

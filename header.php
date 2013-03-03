@@ -10,7 +10,7 @@ define('MAIN', dirname(__FILE__) . '/');
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 
-  <title><?php wp_title(); ?> </title>
+  <title>Clare Housing Board</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>

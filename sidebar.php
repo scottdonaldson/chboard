@@ -1,5 +1,26 @@
-<p><a href="<?php echo bloginfo('template_url'); ?>/pdf/board-phone-list.pdf">Contact List</a></p>
-<p><a href="<?php echo bloginfo('template_url'); ?>/pdf/meetings-by-month.pdf">Calendar (PDF)</a></p>
-<p><a href="<?php echo bloginfo('template_url'); ?>/pdf/feb-board-package.pdf">February Board Package</a></p>
-<p><a href="<?php echo bloginfo('template_url'); ?>/pdf/january-package.pdf">January Board Package</a></p>
-<p><a href="<?php echo bloginfo('template_url'); ?>/pdf/2011-990.pdf">2011 Audit/990</a></p>
+<?php
+if (get_field('items', 'Options')) {
+
+	while (has_sub_field('items', 'Options')) {
+		$type = get_sub_field('type');
+
+		switch ($type) {
+
+			case 'pdf':
+				$target = get_sub_field('file');
+				break;
+
+			case 'in-link':
+				$target = get_sub_field('in-link');
+				break;
+
+			case 'ex-link':
+				$target = get_sub_field('ex-link');
+				break;
+
+		} ?>
+		<p><a href="<?php echo $target; ?>" <?php if ($type == 'ex-link') { echo 'target="_blank"'; } ?>><?php the_sub_field('label'); ?></a></p>
+	<?php
+	}
+}
+?>
