@@ -127,7 +127,7 @@ wp_reset_postdata();
                         
                     } 
                     if ($i == $start + $last) { // set the start date for the next month
-                        $nextstart = $i % 7;
+                        $nextstart = $i % 7 > 0 ? $i % 7 : ($i % 7) + 7;
                     } ?>
                 </div>
                 <?php 
@@ -154,7 +154,7 @@ wp_reset_postdata();
                 } else { ?>
                 <div class="date">
                     <?php 
-                    echo '<small class="day">'.($i - $start).'</small>';
+                    echo '<small class="day">'.($i - $nextstart).'</small>';
                     foreach ($output as $meeting) {
                         // Set vars
                         $date = $meeting[0];
@@ -162,7 +162,7 @@ wp_reset_postdata();
                         $link = $meeting[2];
                         
                         // If it's the correct day and the correct month, output the meeting name
-                        if (substr($date, 6, 2) == $i - $start && substr($date, 4, 2) == date('m') + 1) { ?>
+                        if (substr($date, 6, 2) == $i - $nextstart && substr($date, 4, 2) == date('m') + 1) { ?>
                             <p><a href="<?php echo $link; ?>/#<?php echo $date; ?>"><?php echo $name; ?></a>
                             </p>
                         <?php
