@@ -33,6 +33,8 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 function remove_admin() {
 	remove_menu_page('link-manager.php');
+	remove_menu_page('upload.php');
+	remove_menu_page('tools.php');
 	remove_menu_page('edit-comments.php');
 }
 add_action('admin_menu', 'remove_admin');
