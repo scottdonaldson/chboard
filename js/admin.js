@@ -1,48 +1,46 @@
-jQuery(document).ready(function($){
-	
+(function($){
+$(document).ready(function(){
+
 	if ($('body').hasClass('toplevel_page_acf-options')) {
+
+		// This is tied to the DOM! Beware!
+		var config = {
+			'pdf': 	   'field_5',
+			'in-link': 'field_6',
+			'ex-link': 'field_7'
+		}
+
 		// For existing items, hide the unused types
-		var radio = $('.radio_list');
-		var value, others, target;
+		var radio = $('.acf-radio-list');
 		
-		var rightType = function(value){
-			switch(value) {
-				case 'pdf':
-					target = $this.closest('.row').find('.acf-file-uploader');
-					others = $this.closest('.row').find('.page_link, .text');
-					break;
-
-				case 'in-link':
-					target = $this.closest('.row').find('.page_link');
-					others = $this.closest('.row').find('.acf-file-uploader, .text');
-					break;
-
-				case 'ex-link':
-					target = $this.closest('.row').find('.text');
-					others = $this.closest('.row').find('.page_link, .acf-file-uploader');
-					break;
+		function hideUnnecessary( $elem ) {
+			for (var item in config) {
+				if ( $elem.val() === item ) {
+					// This logic is also tied to the DOM!
+					$elem.closest('tbody').find('[data-field_key="' + config[item] + '"]').show();
+				} else {
+					// Ditto!
+					$elem.closest('tbody').find('[data-field_key="' + config[item] + '"]').hide();
+				}
 			}
-
-			target.show();
-			others.hide();
 		}
 
 		radio.each(function(){
-			$this = $(this);
-			value = $this.find(':checked').val();
-			
-			rightType(value);
+			hideUnnecessary( $(this).find(':checked') );
 		});
 
 		// Since new rows are added to the DOM when sidebar items are added,
 		// need to check with each document click if we're changing an input
 		$(document).click(function(e){
+			if (e.target.id &&
+				e.target.id.slice(0, 9) === 'acf-field' && 
+				e.target.type &&
+				e.target.type === 'radio') {
 
-			$this = $(e.target);
-			value = $this.val();
-
-			rightType(value);
+				hideUnnecessary( $(e.target) );
+			}
 		});
 	}
 
 });
+}(jQuery));
