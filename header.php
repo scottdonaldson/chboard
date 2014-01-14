@@ -49,7 +49,8 @@ define('MAIN', dirname(__FILE__) . '/');
 
         $url = get_bloginfo('template_url'); ?>
         <img src="<?php echo get_bloginfo('template_url'); ?>/images/banner-home<?php echo $num; ?>.jpg">
-                 
+
+      <?php wp_nav_menu('Primary Menu'); ?>
     </div>
 
 </header>
