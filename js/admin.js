@@ -1,7 +1,7 @@
 (function($){
 $(document).ready(function(){
 
-	if ($('body').hasClass('toplevel_page_acf-options')) {
+	if ($('#acf-sidebar').length > 0) {
 
 		// This is tied to the DOM! Beware!
 		var config = {

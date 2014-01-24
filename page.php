@@ -7,33 +7,41 @@
     <h1 class="entry-title red"><?php the_title(); ?></h1>
     
     <div class="entry-content indented">
-    	<?php the_content(); ?>
+    	<?php
+    	while (have_rows('pdf')) : the_row();
+    		the_sub_field('issuu_embed_code');
+    	endwhile;
+    	?>
     </div>      
 </article>
 
 <div class="fourth clearfix leftnav">
-	<?php if ($post->post_parent) { 
-			  $children = wp_list_pages('title_li=&child_of='.$post->post_parent.'&echo=0'); 
-			  $parent_link = get_permalink($post->post_parent); 
-			  $parent = get_the_title($post->post_parent); 
-		} else { 
-			  $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0'); 
-			  $parent_link = get_permalink($post->ID); 
-			  $parent = get_the_title($post->ID); }
-    	if ($children) { 
-			
-			if (is_page($parent)) { 
-				echo '<ul><li class="current_page_item"><strong>'; 
-			} else { 
-				echo '<ul><li><strong>'; 
+	<?php
+	if (get_field('sidebar')) {
+
+		while (has_sub_field('sidebar')) {
+			$type = get_sub_field('type');
+
+			switch ($type) {
+
+				case 'pdf':
+					$target = get_sub_field('file');
+					break;
+
+				case 'in-link':
+					$target = get_sub_field('in-link');
+					break;
+
+				case 'ex-link':
+					$target = get_sub_field('ex-link');
+					break;
+
 			} ?>
-            	<a href="<?php echo $parent_link; ?>">
-                	<?php echo $parent; ?>
-                </a>
-            	</strong></li>
-          	<?php echo $children; ?>
-      	</ul>
-    <?php } ?>
+			<p><a href="<?php echo $target; ?>" <?php if ($type == 'ex-link') { echo 'target="_blank"'; } ?>><?php the_sub_field('label'); ?></a></p>
+		<?php
+		}
+	}
+	?>
 </div>
 
 <?php get_footer(); ?>

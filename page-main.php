@@ -118,8 +118,8 @@ wp_reset_postdata();
                         $name = $meeting[1];
                         $link = $meeting[2];
                         
-                        // If it's the correct day and the correct month, output the meeting name
-                        if (substr($date, 6, 2) == $i - $start && substr($date, 4, 2) == date('m')) { ?>
+                        // If it's the correct day, month, and year, output the meeting name
+                        if (substr($date, 6, 2) == $i - $start && substr($date, 4, 2) == date('m') && substr($date, 0, 4) == date('Y')) { ?>
                             <p><a href="<?php echo $link; ?>/#<?php echo $date; ?>"><?php echo $name; ?></a>
                             </p>
                         <?php
@@ -162,7 +162,7 @@ wp_reset_postdata();
                         $link = $meeting[2];
                         
                         // If it's the correct day and the correct month, output the meeting name
-                        if (substr($date, 6, 2) == $i - $nextstart && substr($date, 4, 2) == date('m') + 1) { ?>
+                        if (substr($date, 6, 2) == $i - $nextstart && substr($date, 4, 2) == date('m') + 1 && substr($date, 0, 4) == date('Y')) { ?>
                             <p><a href="<?php echo $link; ?>/#<?php echo $date; ?>"><?php echo $name; ?></a>
                             </p>
                         <?php

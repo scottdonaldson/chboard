@@ -7,6 +7,8 @@ body {
 	margin-top: 35px;
 }
 
+h2, h3 { clear: both; }
+
 #loginform {
 	border: 1px solid #c3b9af;
 	margin: 0 auto;
@@ -21,6 +23,27 @@ body {
 #loginform input {
 	display: block;
 	width: 100%;
+}
+
+.banner .menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+.banner .menu li {
+	display: inline-block;
+	margin: 15px 10px;
+	text-transform: uppercase;
+}
+
+.banner .menu li a {
+	background: #85281e;
+	color: #f3f1ef;
+	padding: 5px 8px;
+}
+
+.banner .menu li a:hover {
+	text-decoration: underline;
 }
 
 .date {
