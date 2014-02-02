@@ -1,7 +1,7 @@
 <?php
-if (get_field('items', 'Options')) {
+if (get_field('sidebar')) {
 
-	while (has_sub_field('items', 'Options')) {
+	while (has_sub_field('sidebar')) {
 		$type = get_sub_field('type');
 
 		switch ($type) {
@@ -12,6 +12,9 @@ if (get_field('items', 'Options')) {
 
 			case 'in-link':
 				$target = get_sub_field('in-link');
+				if ( get_sub_field('past_meetings') ) {
+					$target .= '?pastmeetings=true';
+				}
 				break;
 
 			case 'ex-link':
@@ -23,4 +26,6 @@ if (get_field('items', 'Options')) {
 	<?php
 	}
 }
+// spacer
+echo '<p>&nbsp;</p>';
 ?>
