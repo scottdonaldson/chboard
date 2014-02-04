@@ -11,7 +11,6 @@ add_editor_style('css/editor-style.css');
 // Admin style
 
 function my_admin_head() {
-    echo '<link rel="stylesheet" type="text/css" href="' .get_bloginfo('template_url').'/css/admin-style.css">';
     echo '<script src="'.get_bloginfo('template_url').'/js/admin.js"></script>';
 }
 
@@ -36,6 +35,10 @@ function remove_admin() {
 	remove_menu_page('upload.php');
 	remove_menu_page('tools.php');
 	remove_menu_page('edit-comments.php');
+	remove_menu_page('profile.php');
+	remove_menu_page('customize.php');
+	remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
+    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
 }
 add_action('admin_menu', 'remove_admin');
 
@@ -43,6 +46,16 @@ add_action('admin_menu', 'remove_admin');
 if (!current_user_can('manage_options')) {
 	add_filter('show_admin_bar', '__return_false');
 }
+
+// Editor can edit menu
+
+function give_user_edit() {
+	if(current_user_can('edit_others_posts')) {
+		global $wp_roles;
+		$wp_roles->add_cap('editor','edit_theme_options' );
+	}
+}
+add_action('admin_init', 'give_user_edit', 10, 0);
 
 
 // Admin footer
