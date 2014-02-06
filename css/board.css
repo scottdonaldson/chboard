@@ -25,26 +25,14 @@ h2, h3 { clear: both; }
 	width: 100%;
 }
 
-.banner .menu ul {
-	margin: 0;
-	padding: 0;
+#select-nav {
+	font-size: 1.3em;
+	margin: 20px 0;
 }
 
-.banner .menu li {
-	display: inline-block;
-	margin: 15px 10px;
-	text-transform: uppercase;
-}
-
-.banner .menu li a {
-	background: #85281e;
-	color: #f3f1ef;
-	padding: 5px 8px;
-}
-
-.banner .menu li a:hover {
-	text-decoration: underline;
-}
+	#select-nav option {
+		font-family: 'Open Sans';
+	}
 
 .date {
 	background-color: #fff;
