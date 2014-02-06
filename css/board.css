@@ -79,3 +79,7 @@ h2, h3 { clear: both; }
 	color: #85281e;
 	font-weight: bold;
 }
+
+#sidebar {
+	min-height: 10px;
+}

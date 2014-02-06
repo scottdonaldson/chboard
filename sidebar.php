@@ -1,3 +1,4 @@
+<div id="sidebar">
 <?php
 if (get_field('sidebar')) {
 
@@ -26,6 +27,5 @@ if (get_field('sidebar')) {
 	<?php
 	}
 }
-// spacer
-echo '<p>&nbsp;</p>';
 ?>
+</div>

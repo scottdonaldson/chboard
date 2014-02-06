@@ -1,5 +1,12 @@
-<?php get_header(); 
-	  the_post(); ?>
+<?php 
+
+function scribd_helper() { ?>
+    <script src="<?= bloginfo('template_url'); ?>/js/scribd.js"></script>
+<?php }
+add_action('wp_footer', 'scribd_helper');
+
+get_header(); 
+the_post(); ?>
       
 <h2 class="callout clear"><?php the_field('callout'); ?></h2>      
       

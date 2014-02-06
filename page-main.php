@@ -5,9 +5,8 @@ Template Name: Main Page
 get_header(); 
 ?>
 
-<?php if (is_user_logged_in()) { ?>
-<h2 class="entry-title">Welcome to the Clare Housing Board Website</h2>
-<?php
+<?php if (is_user_logged_in()) {
+    
 $meetings = new WP_Query(array(
     'posts_per_page' => -1
     )

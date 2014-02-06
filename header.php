@@ -56,16 +56,22 @@ define('MAIN', dirname(__FILE__) . '/');
 <div id="container" class="clearfix contentbox">
     
     <div id="main" role="main" class="clearfix gradient">
-      <?php 
-      $menu = wp_get_nav_menu_items('Primary Menu');
-      echo '<select id="select-nav" onchange="location=this.options[this.selectedIndex].value;">';
-      echo '<option disabled selected>Select a page:</option>';
-      foreach ($menu as $menu_item) {
-        echo '<option value="'.$menu_item->guid.'">'.$menu_item->title.'</option>';
-      }
-      echo '</select>';
-      ?>
+      
       <div class="callout"></div>
-      <?php if (!is_front_page()) { ?>
-      <h3 class="entry-title"><a href="<?php echo home_url(); ?>">Back to Main &raquo;</a></h3>
+      <?php if (is_front_page()) { ?>
+      <h2 class="entry-title" style="margin-bottom: 10px;">Welcome to the Clare Housing Board Website</h2>
       <?php } ?>
+
+      <?php 
+      if (is_user_logged_in()) { 
+
+        $menu = wp_get_nav_menu_items('Primary Menu');
+        echo '<script>var MENU = '.json_encode($menu).'</script>';
+        echo '<select id="select-nav" onchange="location=this.options[this.selectedIndex].value;">';
+        echo '<option disabled selected>Select a page:</option>';
+        foreach ($menu as $menu_item) {
+          echo '<option value="'.$menu_item->url.'">'.$menu_item->title.'</option>';
+        }
+        echo '</select>';
+      }
+      ?>
