@@ -45,7 +45,7 @@ wp_reset_postdata();
 
     <div class="two-thirds">
 
-        <h2>Calendar <small>(<a href="<?php echo home_url(); ?>?view=list">View as List &raquo;</a>)</small></h2>
+        <h2>Calendar</h2>
         <div class="calendar clearfix">
             <?php 
             $month = date('F');
