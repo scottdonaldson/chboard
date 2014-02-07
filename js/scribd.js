@@ -1,5 +1,7 @@
 (function($){
 $(document).ready(function(){
+
+	jQuery.fn.reverse = [].reverse;
 	
 	var frames = $('iframe'),
 		sidebar = $('#sidebar');
@@ -11,7 +13,7 @@ $(document).ready(function(){
 		}, 500);
 	}
 
-	frames.each(function(){
+	frames.reverse().each(function(){
 		var p = $('<p>'),
 			link = $('<a>');
 		link.attr( 'href', '#' )
@@ -20,7 +22,7 @@ $(document).ready(function(){
 			.click( scrollToFrame );
 
 		p.append( link );
-		p.appendTo( sidebar );
+		p.prependTo( sidebar );
 
 	});
 

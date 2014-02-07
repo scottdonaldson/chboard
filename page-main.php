@@ -3,39 +3,40 @@
 Template Name: Main Page
 */
 get_header(); 
-?>
 
-<?php if (is_user_logged_in()) {
+
+if (is_user_logged_in()) {
     
 $meetings = new WP_Query(array(
     'posts_per_page' => -1
     )
 );
 $output = array();
-while ($meetings->have_posts()) : $meetings->the_post();
+$i = 0;
+while ( $meetings->have_posts() ) : $meetings->the_post();
+    
+    $these_meetings = get_field('meeting');
 
-    if (get_field('meeting')) {
-        while (has_sub_field('meeting')) {
-            $m = get_sub_field('date');
-            $m = substr($m, 4, 2);
-            if ($m == date('m') || $m == date('m') + 1) {
-                array_push($output, 
-                    array(
-                        get_sub_field('date'), 
-                        get_the_title(), 
-                        get_permalink(),
-                        get_sub_field('time'),
-                        get_sub_field('location')
-                    )
-                );
-            }
+    foreach ($these_meetings as $this_meeting) {
+        $y = substr($this_meeting['date'], 0, 4);
+        $m = substr($this_meeting['date'], 4, 2);
+
+        // this or next month
+        if ( ($m == date('m') || $m == date('m') + 1) && $y == date('Y') ) {
+            $output[$i] = array(
+                $this_meeting['date'], 
+                get_the_title(), 
+                get_permalink(),
+                $this_meeting['time'],
+                $this_meeting['location']
+            );
         }
+        $i++;
     }
-
 endwhile;
 wp_reset_postdata();
-
 ?>
+
 <section class="row">
 	
     <div class="third">
@@ -43,39 +44,6 @@ wp_reset_postdata();
     </div>
 
     <div class="two-thirds">
-        <?php if ($_GET['view'] == 'list') { ?>
-        <h2>Upcoming Meetings <small>(<a href="<?php echo home_url(); ?>">View as Calendar &raquo;</a>)</small></h2>
-        <?php 
-        $today = date('Ymd');
-
-        asort($output);
-        foreach ($output as $meeting) {
-            // Set vars
-            $date = $meeting[0];
-            $name = $meeting[1];
-            $link = $meeting[2];
-            $time = $meeting[3];
-            $location = $meeting[4];
-
-            $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-
-            if ($meeting[0] >= $today) {
-
-                $month = substr($date, 4, 2);
-                $day = substr($date, 6, 2);
-                // If $day starts with a 0, chop it off
-                substr($day, 0, 1) == 0 ? $day = substr($day, 1, 1) : $day = $day; ?>
-
-                <a class="entry clearfix" href="<?php echo $link; ?>/#<?php echo $date; ?>">
-                    <p class="alignleft"><?php echo $months[$month - 1]; ?>&nbsp;<?php echo $day; ?>, <?php echo $time; ?>&nbsp;<?php if ($location) { echo '('.$location.')'; } ?></p>
-                    <p class="alignright"><strong><?php echo $name; ?></strong></p>
-                </a>
-                <?php
-            }
-        }
-        ?>
-
-        <?php } else { ?>
 
         <h2>Calendar <small>(<a href="<?php echo home_url(); ?>?view=list">View as List &raquo;</a>)</small></h2>
         <div class="calendar clearfix">
@@ -161,7 +129,7 @@ wp_reset_postdata();
                         $link = $meeting[2];
                         
                         // If it's the correct day and the correct month, output the meeting name
-                        if (substr($date, 6, 2) == $i - $nextstart && substr($date, 4, 2) == date('m') + 1 && substr($date, 0, 4) == date('Y')) { ?>
+                        if (substr($date, 6, 2) == $i - $nextstart && substr($date, 4, 2) == date('m') + 1) { ?>
                             <p><a href="<?php echo $link; ?>/#<?php echo $date; ?>"><?php echo $name; ?></a>
                             </p>
                         <?php
@@ -175,9 +143,6 @@ wp_reset_postdata();
             ?>
         </div>
 
-        <?php } ?>
-
-        <h2><a href="<?php echo home_url(); ?>/all">View all upcoming meetings &raquo;</a></h2>
     </div>
 
 </section>

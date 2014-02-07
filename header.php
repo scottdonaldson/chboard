@@ -66,7 +66,6 @@ define('MAIN', dirname(__FILE__) . '/');
       if (is_user_logged_in()) { 
 
         $menu = wp_get_nav_menu_items('Primary Menu');
-        echo '<script>var MENU = '.json_encode($menu).'</script>';
         echo '<select id="select-nav" onchange="location=this.options[this.selectedIndex].value;">';
         echo '<option disabled selected>Select a page:</option>';
         foreach ($menu as $menu_item) {
