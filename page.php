@@ -6,6 +6,9 @@ function scribd_helper() { ?>
 add_action('wp_footer', 'scribd_helper');
 
 get_header(); 
+
+if (is_user_logged_in()) {
+    
 the_post(); ?>
       
 <h2 class="callout clear"><?php the_field('callout'); ?></h2>      
@@ -25,5 +28,7 @@ the_post(); ?>
 <div class="fourth clearfix leftnav">
 	<?php get_sidebar(); ?>
 </div>
+
+<?php } else { include( MAIN .'login.php'); } ?>
 
 <?php get_footer(); ?>
