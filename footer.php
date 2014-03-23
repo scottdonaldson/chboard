@@ -15,7 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="<?php echo bloginfo('template_url'); ?>/js/jquery.fitvids.js"></script> 
     <script src="<?php echo bloginfo('template_url'); ?>/js/jquery.flexslider.js"></script>  
-	<script src="<?php echo bloginfo('template_url'); ?>/js/clare.js"></script>
+  	<script src="<?php echo bloginfo('template_url'); ?>/js/clare.js"></script>
+    <script src="<?= bloginfo('template_url'); ?>/js/scribd.js"></script>
 
 <?php wp_footer(); ?>
 </body>

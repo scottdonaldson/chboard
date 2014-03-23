@@ -13,6 +13,29 @@ $(document).ready(function(){
 		}, 500);
 	}
 
+	// remove "by clarehousing" from all the scribd titles
+	$('article p').each(function(){
+		var $this = $(this);
+
+		if ( $this.text().indexOf(' by ') > -1 ) {
+
+			$this.text( $this.text().replace(' by ', '') );
+
+		}
+
+		$this.find('a').each(function(){
+
+			var link = $(this);
+			
+			if ( link.text() === 'clarehousing' ) {
+				
+				link.remove();
+			
+			}
+
+		});
+	});
+
 	frames.reverse().each(function(){
 		var p = $('<p>'),
 			link = $('<a>');

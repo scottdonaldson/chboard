@@ -1,10 +1,4 @@
 <?php 
-
-function scribd_helper() { ?>
-    <script src="<?= bloginfo('template_url'); ?>/js/scribd.js"></script>
-<?php }
-add_action('wp_footer', 'scribd_helper');
-
 get_header(); 
 
 if (is_user_logged_in()) {
