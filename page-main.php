@@ -13,25 +13,27 @@ $meetings = new WP_Query(array(
 );
 $output = array();
 $i = 0;
-while ( $meetings->have_posts() ) : $meetings->the_post();
+if ( $meetings->have_posts()) : while ( $meetings->have_posts() ) : $meetings->the_post();
     
     $these_meetings = get_field('meeting');
 
-    foreach ($these_meetings as $this_meeting) {
-        $y = substr($this_meeting['date'], 0, 4);
-        $m = substr($this_meeting['date'], 4, 2);
+    if ($these_meetings) {
+        foreach ($these_meetings as $this_meeting) {
+            $y = substr($this_meeting['date'], 0, 4);
+            $m = substr($this_meeting['date'], 4, 2);
 
-        $output[$i] = array(
-            $this_meeting['date'], 
-            get_the_title(), 
-            get_permalink(),
-            $this_meeting['time'],
-            $this_meeting['location']
-        );
+            $output[$i] = array(
+                $this_meeting['date'], 
+                get_the_title(), 
+                get_permalink(),
+                $this_meeting['time'],
+                $this_meeting['location']
+            );
 
-        $i++;
+            $i++;
+        }
     }
-endwhile;
+endwhile; endif;
 wp_reset_postdata();
 ?>
 

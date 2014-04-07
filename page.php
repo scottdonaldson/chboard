@@ -11,18 +11,22 @@ the_post(); ?>
     <h1 class="entry-title red"><?php the_title(); ?></h1>
     
     <div class="entry-content indented">
+
+		<?php the_content(); ?>
+
     	<?php
     	while (have_rows('pdf')) : the_row();
     		the_sub_field('embed_code');
     	endwhile;
     	?>
-    </div>      
+    </div>
+    
 </article>
 
 <div class="fourth clearfix leftnav">
 	<?php get_sidebar(); ?>
 </div>
 
-<?php } else { include( MAIN .'login.php'); } ?>
+<?php } else { include( MAIN . 'login.php'); } ?>
 
 <?php get_footer(); ?>

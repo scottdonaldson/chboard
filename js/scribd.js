@@ -14,26 +14,28 @@ $(document).ready(function(){
 	}
 
 	// remove "by clarehousing" from all the scribd titles
-	$('article p').each(function(){
+	$('p').each(function(){
 		var $this = $(this);
 
-		if ( $this.text().indexOf(' by ') > -1 ) {
+		if ( $this.parents('#sidebar').length === 0 ) {
+			if ( $this.html().indexOf(' by ') > -1 ) {
 
-			$this.text( $this.text().replace(' by ', '') );
+				$this.html( $this.html().replace(' by ', '') );
 
-		}
-
-		$this.find('a').each(function(){
-
-			var link = $(this);
-			
-			if ( link.text() === 'clarehousing' ) {
-				
-				link.remove();
-			
 			}
 
-		});
+			$this.find('a').each(function(){
+
+				var link = $(this);
+				
+				if ( link.text() === 'clarehousing' ) {
+					
+					link.remove();
+				
+				}
+
+			});
+		}
 	});
 
 	frames.reverse().each(function(){
