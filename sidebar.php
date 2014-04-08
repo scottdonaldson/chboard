@@ -19,7 +19,7 @@ while ( meta('sidebar_' . $i . '_type') ) {
 
 		case 'in-link':
 			$target = meta('sidebar_' . $i . '_in-link');
-			$target = get_post($target)->guid;
+			$target = get_post_permalink($target);
 			break;
 
 		case 'ex-link':
