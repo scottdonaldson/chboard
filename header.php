@@ -1,6 +1,37 @@
 <?php
 // Define paths
 define('MAIN', dirname(__FILE__) . '/');
+
+if (isset($_GET['action']) && $_GET['action'] === 'login') {
+
+  // If no password given
+  if ( $_POST['password'] === '') {
+    $error = 'Please enter a password.';
+  }
+
+  if ( $_POST['username'] === '') {
+    $error = 'Please enter a username.';
+  }
+
+  if ( $_POST['username'] === '' && $_POST['password'] === '') {
+    $error = 'Please enter a username and a password.';
+  }
+
+  $users = get_field('board_users', 'Options');
+  echo '<pre style="color: #fff;">';
+  var_dump($_POST);
+  echo '<br>';
+  echo !isset($_POST['password']);
+  echo '<br>';
+  var_dump($users);
+  echo '</pre>';
+  /* foreach ($users as $user) {
+    if ( true ) {
+
+    }
+  } */
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +70,7 @@ define('MAIN', dirname(__FILE__) . '/');
 <header class="contentbox">
         
     <a href="<?php echo home_url(); ?>">
-		<img src="<?php echo bloginfo('template_url'); ?>/images/logo.png" id="logo" alt="Clare Housing - Partners in AIDS Care" />
+		<img src="<?php echo bloginfo('template_url'); ?>/images/logo.png" id="logo" alt="Clare Housing - Partners in AIDS Care">
     </a>
         
     <div class="banner">

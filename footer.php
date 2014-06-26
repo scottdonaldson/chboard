@@ -4,7 +4,8 @@
 
 <footer class="contentbox clearfix">
 	
-	<p>&copy; <?php echo date('Y'); ?> Clare Housing.<span class="spacer"> </span>929 Central Avenue NE, Minneapolis, MN 55413.<span class="spacer"> </span>(612) 236-9515.</p>
+	<p class="alignleft">&copy; <?php echo date('Y'); ?> Clare Housing.<span class="spacer"> </span>929 Central Avenue NE, Minneapolis, MN 55413.<span class="spacer"> </span>(612) 236-9515.</p>
+  <p class="alignright"><a href="<?php echo wp_logout_url(home_url()); ?>" title="Logout">Logout</a></p>
 </footer>
 
   <!--[if lt IE 7 ]>
