@@ -1,7 +1,7 @@
 <?php 
 get_header(); 
 
-if (is_user_logged_in()) {
+if ( user_conds() ) {
     
 the_post(); ?>
       

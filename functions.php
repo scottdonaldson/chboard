@@ -1,5 +1,44 @@
 <?php
 
+// ----- User conditions
+function user_conds() {
+	return is_user_logged_in() || (chboard_logged_in() && chboard_has_permission());
+}
+
+// ----- Determine whether the user is logged in (our own cookie-ing system)
+function chboard_logged_in() {
+	if (isset($_COOKIE['chboard_logged_in']) && $_COOKIE['chboard_logged_in'] !== '') {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// ----- Determine whether the logged in user has permissions to view the page
+function chboard_has_permission() {
+	if ( chboard_logged_in() ) {
+		$username = $_COOKIE['chboard_logged_in'];
+		$users = get_field('board_users', 'Options');
+		// loop through to find the current user
+		foreach ($users as $user) {
+			if ($user['username'] === $username) {
+				$the_user = $user;
+				break;
+			}
+		}
+		// If 0 allowed pages, that actually means all, so always return true
+		if ( !$the_user['access'] ) {
+			return true;
+		}
+		foreach ($the_user['access'] as $access) {
+			if (get_the_permalink() === $access) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 // Navigation menus
 register_nav_menus( array(
 	'primary' => 'Primary Menu'
@@ -9,7 +48,6 @@ register_nav_menus( array(
 add_editor_style('css/editor-style.css');
 
 // Admin style
-
 function my_admin_head() {
     echo '<script src="'.get_bloginfo('template_url').'/js/admin.js"></script>';
 }

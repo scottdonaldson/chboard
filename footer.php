@@ -5,7 +5,7 @@
 <footer class="contentbox clearfix">
 	
 	<p class="alignleft">&copy; <?php echo date('Y'); ?> Clare Housing.<span class="spacer"> </span>929 Central Avenue NE, Minneapolis, MN 55413.<span class="spacer"> </span>(612) 236-9515.</p>
-  <p class="alignright"><a href="<?php echo wp_logout_url(home_url()); ?>" title="Logout">Logout</a></p>
+  <p class="alignright"><a href="<?php the_permalink(); ?>?action=logout" title="Logout">Logout</a></p>
 </footer>
 
   <!--[if lt IE 7 ]>

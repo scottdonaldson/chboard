@@ -2,34 +2,43 @@
 // Define paths
 define('MAIN', dirname(__FILE__) . '/');
 
-if (isset($_GET['action']) && $_GET['action'] === 'login') {
+if ($_GET['action'] === 'login') {
 
   // If no password given
-  if ( $_POST['password'] === '') {
-    $error = 'Please enter a password.';
+  if ( !$_POST['password']) {
+    $GLOBALS['chboard_error'] = 'Please enter a password.';
   }
 
-  if ( $_POST['username'] === '') {
-    $error = 'Please enter a username.';
+  if ( !$_POST['username']) {
+    $GLOBALS['chboard_error'] = 'Please enter a username.';
   }
 
-  if ( $_POST['username'] === '' && $_POST['password'] === '') {
-    $error = 'Please enter a username and a password.';
+  if ( !$_POST['username'] && !$_POST['password']) {
+    $GLOBALS['chboard_error'] = 'Please enter a username and a password.';
   }
 
   $users = get_field('board_users', 'Options');
-  echo '<pre style="color: #fff;">';
-  var_dump($_POST);
-  echo '<br>';
-  echo !isset($_POST['password']);
-  echo '<br>';
-  var_dump($users);
-  echo '</pre>';
-  /* foreach ($users as $user) {
-    if ( true ) {
-
+  foreach ($users as $user) {
+    // username is in the system
+    if ( $user['username'] === $_POST['username'] ) {
+      if ( $user['password'] === $_POST['password'] ) {
+        // good to go!
+        setcookie('chboard_logged_in', $_POST['username'], time() + 3600 * 24 * 7, '/', $_SERVER['HTTP_HOST']); // exp. in 1 week
+        header('Location: ' . get_the_permalink());
+      } else {
+        // bad password
+        $GLOBALS['chboard_error'] = 'Bad username or password. Try again.';
+      }
+      break;
     }
-  } */
+    // bad password
+    $GLOBALS['chboard_error'] = 'Bad username or password. Try again.'; 
+  }
+}
+
+if ($_GET['action'] === 'logout') {
+  setcookie('chboard_logged_in', '', time() - 3600, '/', $_SERVER['HTTP_HOST']);
+  header('Location: ' . get_the_permalink());
 }
 
 ?>
@@ -94,7 +103,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
       <?php } ?>
 
       <?php 
-      if (is_user_logged_in()) { 
+      if ( user_conds() ) { 
 
         $menu = wp_get_nav_menu_items('Primary Menu');
         echo '<select id="select-nav" onchange="location=this.options[this.selectedIndex].value;">';

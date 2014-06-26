@@ -5,7 +5,7 @@ Template Name: Main Page
 get_header(); 
 
 
-if (is_user_logged_in()) {
+if ( user_conds() ) {
     
 $meetings = new WP_Query(array(
     'posts_per_page' => -1

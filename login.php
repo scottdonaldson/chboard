@@ -1,8 +1,9 @@
 <?php
-if (isset($error)) { ?>
-	<p class="aligncenter"><strong><?= $error; ?>1234</strong></p>
+if ( isset($GLOBALS['chboard_error']) ) { ?>
+	<p class="aligncenter red"><strong><?= $GLOBALS['chboard_error']; ?></strong></p>
 <?php } ?>
 
+<?php if (!chboard_logged_in()) { ?>
 <p class="aligncenter">You must log in to continue.</p>
 
 <form name="loginform" id="loginform" action="<?php the_permalink(); ?>?action=login" method="post">
@@ -22,3 +23,10 @@ if (isset($error)) { ?>
 	</p>
 	
 </form>
+
+<?php
+// logged in but does not have permission to view
+} else if (chboard_logged_in() && !chboard_has_permission()) { ?>
+	<p class="aligncenter red"><strong>You do not have permission to view this page.</strong></p>
+	<p class="aligncenter"><strong><a href="<?= home_url(); ?>">Back to main page &raquo;</a></strong></p>
+<?php } ?>
